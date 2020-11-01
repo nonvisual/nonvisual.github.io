@@ -122,7 +122,60 @@
 
     <span class="post-date">01 Nov 2020</span>
 
-    <p><a href="https://github.com/nonvisual/budget_optimization">Github repo</a> with project example</p>
+    <table>
+  <thead>
+    <tr>
+      <th>info</th>
+      <th>type</th>
+      <th>amount</th>
+      <th>importance</th>
+      <th>week</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Lidl</td>
+      <td>1</td>
+      <td>60.0</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>Zalando</td>
+      <td>2</td>
+      <td>45.0</td>
+      <td>2</td>
+      <td>28</td>
+    </tr>
+    <tr>
+      <td>Rent Aug</td>
+      <td>3</td>
+      <td>1450.0</td>
+      <td>10</td>
+      <td>17</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="optimization-goal-ie-objective-function">Optimization goal, i.e. objective function</h3>
+<p>We want to minimize the total importance of all the transaction we decide to remove, in order to achieve certain savings goal.</p>
+
+<p>If \(I_n\) is importance of transaction \(n\), then our goal is to</p>
+
+\[\begin{align*}
+\min \sum_{n \in N} I_n z_n
+\end{align*}\]
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">compare_expenses_by_type</span><span class="p">(</span><span class="n">solved_data</span><span class="p">,</span> <span class="n">exp_type</span><span class="p">):</span>
+    <span class="n">before</span> <span class="o">=</span> <span class="n">solved_data</span><span class="p">[(</span><span class="n">solved_data</span><span class="p">[</span><span class="s">'type'</span><span class="p">]</span><span class="o">==</span><span class="n">exp_type</span><span class="p">)</span> <span class="p">].</span><span class="n">groupby</span><span class="p">(</span><span class="s">'week'</span><span class="p">)[</span><span class="s">'amount'</span><span class="p">].</span><span class="nb">sum</span><span class="p">()</span>
+    <span class="n">after</span> <span class="o">=</span> <span class="n">solved_data</span><span class="p">[(</span><span class="n">solved_data</span><span class="p">[</span><span class="s">'solution'</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">solved_data</span><span class="p">[</span><span class="s">'type'</span><span class="p">]</span><span class="o">==</span><span class="n">exp_type</span><span class="p">)</span> <span class="p">].</span><span class="n">groupby</span><span class="p">(</span><span class="s">'week'</span><span class="p">)[</span><span class="s">'amount'</span><span class="p">].</span><span class="nb">sum</span><span class="p">()</span>
+    <span class="n">comparison</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s">"original"</span><span class="p">:</span><span class="n">before</span><span class="p">,</span> <span class="s">"optimized"</span> <span class="p">:</span><span class="n">after</span><span class="p">})</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">f"</span><span class="si">{</span><span class="n">transaction_type</span><span class="p">[</span><span class="n">exp_type</span><span class="p">]</span><span class="si">}</span><span class="s"> savings by week"</span><span class="p">)</span>
+    <span class="n">comparison</span><span class="p">.</span><span class="n">plot</span><span class="p">.</span><span class="n">bar</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p><img src="images/budget_optimization/Budget share.png" alt="Budget optimized" />
+<a href="https://github.com/nonvisual/budget_optimization">Github repo</a> with project example with simple idea.</p>
 
   </div>
   
@@ -143,5 +196,11 @@
     <label for="sidebar-checkbox" class="sidebar-toggle"></label>
 
     <script src='/public/js/script.js'></script>
+
+
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
   </body>
+
+  
 </html>
