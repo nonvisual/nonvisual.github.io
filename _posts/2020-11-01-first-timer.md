@@ -28,5 +28,5 @@ def compare_expenses_by_type(solved_data, exp_type):
     comparison.plot.bar()
 ```
 
-![Budget optimized](images/budget_optimization/Budget share.png)
+![Budget optimized](/images/budget_optimization/Budget share.png)
 [Github repo](https://github.com/nonvisual/budget_optimization) with project example with simple idea.
