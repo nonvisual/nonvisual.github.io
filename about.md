@@ -31,4 +31,4 @@ Industries:
 Thanks for reading!
 
 
-*This blog is built on top of Lanyon theme for Jekyll. More information [here](https://lanyon.getpoole.com/)*
+*This blog is built on top of Lanyon and Codinfox-lanyon themes for Jekyll. More information [here](https://lanyon.getpoole.com/) and [here](https://github.com/codinfox/codinfox-lanyon)*
