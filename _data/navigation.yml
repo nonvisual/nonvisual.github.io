@@ -2,5 +2,5 @@
   link: /
 - name: About
   link: /about.html
-- name: Not existing yet
-  link: /not.html
+- name: Blog
+  link: /blog.html
