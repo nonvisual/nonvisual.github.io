@@ -1,6 +1,8 @@
 ---
 layout: post
 title: First post example
+topic: Operations Research
+tags: [or, budget, optimization, operations research]
 ---
 
 | info     |  type  | amount | importance | week |

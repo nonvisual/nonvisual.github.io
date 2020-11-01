@@ -26,3 +26,9 @@ footer-links:
   email: nonvisual.wrk@gmail.com
   github: nonvisual
   linkedin: vladimir-fux
+
+sass:
+  style: compressed
+  sass_dir: _scss   
+
+tag_page: '/blog/tags/'

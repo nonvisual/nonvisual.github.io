@@ -5,60 +5,48 @@ layout: default
 <div class="post">
   <h1 class="post-title">{{ page.title }}</h1>
   <span class="post-date">{{ page.date | date_to_string }}</span>
-  {{ content }}
+  {% if page.tags %} | 
+  {% for tag in page.tags %}
+    <a href="{{ site.baseurl }}{{ site.tag_page }}#{{ tag | slugify }}" class="post-tag">{{ tag }}</a>
+  {% endfor %}
+  {% endif %}
+  <article>
+    {{ content }}
+  </article>
 </div>
 
 <div class="related">
   <h2>Related Posts</h2>
   <ul class="related-posts">
-    {% if page.tags == null %}
-      {% comment %} Use default related posts {% endcomment %}
-      {% for post in site.related_posts limit:3 %}
-        <li>
-          <h3>
-            <a href="{{ site.baseurl }}{{ post.url }}">
-              {{ post.title }}
-              <small>{{ post.date | date_to_string }}</small>
-            </a>
-          </h3>
-        </li>
-      {% endfor %}  
-    {% else %}
-      {% comment %} Build related posts from tags {% endcomment %}  
-      {%- capture related_post_urls -%} {%- comment -%} Get all pages with matching tags {%- endcomment -%} 
-        {%- for tag in page.tags -%}
-          {%- for post in site.tags[tag] -%}
-            {{- post.url -}}^
-          {%- endfor -%}
-        {%- endfor -%}
-      {%- endcapture -%}
-    
-      {% assign related_posts = related_post_urls | split: "^" %}
-      {% assign uniq_related_posts = related_posts | uniq %}
-      {%- capture related_post_counts -%} {%- comment -%} Generate frequency count for each page {%- endcomment -%} 
-        {%- for post in uniq_related_posts -%}
-          {%- unless post.size == 0 or page.url contains post -%}
-            {%- assign count = related_posts | where_exp: "item", "item == post" | size -%}
-            {{- count -}}@{{- post -}}^
-          {%- endunless -%}
-        {%- endfor -%}
-      {%- endcapture -%}
-   
-      {% assign top_related_posts = related_post_counts | split: "^" | sort | reverse %} 
-      {% for post in top_related_posts limit:3 %}
-        {% assign post_info = post | split: "@" %}
-        {% assign post_obj = site.posts | where_exp: "post", "post.url contains post_info[1]" | first %}
-        <li>
-          <h3> 
-            <a href="{{ site.baseurl }}{{ post_obj.url }}">
-              {{ post_obj.title }}
-              <small>{{ post_obj.date | date_to_string }}</small>
-            </a>
-          </h3>
-        </li>
-      {% endfor %}       
-    {% endif %}
+    {% for post in site.related_posts limit:3 %}
+      <li>
+        <h3>
+          <a href="{{ site.baseurl }}{{ post.url }}">
+            {{ post.title }}
+            <small>{{ post.date | date_to_string }}</small>
+          </a>
+        </h3>
+      </li>
+    {% endfor %}
   </ul>
 </div>
 
-{% include disqus.html %}
+{% if site.disqus_short_name %}
+<div class="comments">
+  <h2>Comments</h2>
+  <div id="disqus_thread"></div>
+  <script>
+var disqus_config = function () {
+  this.page.url = '{{ site.url }}{{ page.url }}'; // Replace PAGE_URL with your page's canonical URL variable
+  this.page.identifier = '{{ page.id }}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+(function() {
+  var d = document, s = d.createElement('script');
+  s.src = '//{{ site.disqus_short_name }}.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+})();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+{% endif %}
