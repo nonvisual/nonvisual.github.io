@@ -1,4 +1,22 @@
+# Setup
+title:               Yet unnamed blog
+tagline:             'TBD'
+description:         'A technical blog focusing on Operations Research and Machine Learning topics'
+url:                 http://nonvisual.github.io
+baseurl:             ''
+paginate:            5
+permalink:           pretty
+
+# About/contact
+author:
+  name:              Vladimir Fux
+  url:               https://www.linkedin.com/in/vladimir-fux/
+  email:             nonvisual.wrk@gmail.com
+
+# Gems
 plugins:
-  - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-seo-tag
+  - jekyll-paginate
+
+# Custom vars
+version:             1.1.0
+google_analytics_id: G-XC4DTDK5EH
