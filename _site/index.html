@@ -10,9 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
   <title>
-    
       Yet unnamed blog &middot; TBD
-    
   </title>
 
   <!-- CSS -->
@@ -117,14 +115,26 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="http://localhost:4000/2020/11/01/first-timer/">
+      <a href="/2020/11/01/first-timer/">
         First post example
       </a>
     </h1>
 
     <span class="post-date">01 Nov 2020</span>
+     | 
+    
+    <a href="/tags#or" class="post-tag">or</a>
+    
+    <a href="/tags#budget" class="post-tag">budget</a>
+    
+    <a href="/tags#optimization" class="post-tag">optimization</a>
+    
+    <a href="/tags#operations-research" class="post-tag">operations research</a>
+    
+    
 
-    <table>
+    <article>
+      <table>
   <thead>
     <tr>
       <th>info</th>
@@ -159,26 +169,11 @@
   </tbody>
 </table>
 
-<h3 id="optimization-goal-ie-objective-function">Optimization goal, i.e. objective function</h3>
-<p>We want to minimize the total importance of all the transaction we decide to remove, in order to achieve certain savings goal.</p>
-
-<p>If \(I_n\) is importance of transaction \(n\), then our goal is to</p>
-
-\[\begin{align*}
-\min \sum_{n \in N} I_n z_n
-\end{align*}\]
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">compare_expenses_by_type</span><span class="p">(</span><span class="n">solved_data</span><span class="p">,</span> <span class="n">exp_type</span><span class="p">):</span>
-    <span class="n">before</span> <span class="o">=</span> <span class="n">solved_data</span><span class="p">[(</span><span class="n">solved_data</span><span class="p">[</span><span class="s">'type'</span><span class="p">]</span><span class="o">==</span><span class="n">exp_type</span><span class="p">)</span> <span class="p">].</span><span class="n">groupby</span><span class="p">(</span><span class="s">'week'</span><span class="p">)[</span><span class="s">'amount'</span><span class="p">].</span><span class="nb">sum</span><span class="p">()</span>
-    <span class="n">after</span> <span class="o">=</span> <span class="n">solved_data</span><span class="p">[(</span><span class="n">solved_data</span><span class="p">[</span><span class="s">'solution'</span><span class="p">]</span><span class="o">==</span><span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">solved_data</span><span class="p">[</span><span class="s">'type'</span><span class="p">]</span><span class="o">==</span><span class="n">exp_type</span><span class="p">)</span> <span class="p">].</span><span class="n">groupby</span><span class="p">(</span><span class="s">'week'</span><span class="p">)[</span><span class="s">'amount'</span><span class="p">].</span><span class="nb">sum</span><span class="p">()</span>
-    <span class="n">comparison</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s">"original"</span><span class="p">:</span><span class="n">before</span><span class="p">,</span> <span class="s">"optimized"</span> <span class="p">:</span><span class="n">after</span><span class="p">})</span>
-    <span class="k">print</span><span class="p">(</span><span class="s">f"</span><span class="si">{</span><span class="n">transaction_type</span><span class="p">[</span><span class="n">exp_type</span><span class="p">]</span><span class="si">}</span><span class="s"> savings by week"</span><span class="p">)</span>
-    <span class="n">comparison</span><span class="p">.</span><span class="n">plot</span><span class="p">.</span><span class="n">bar</span><span class="p">()</span>
-</code></pre></div></div>
-
-<p><img src="/images/budget_optimization/Budget share.png" alt="Budget optimized" />
-<a href="https://github.com/nonvisual/budget_optimization">Github repo</a> with project example with simple idea.</p>
-
+    <article>
+    <div class="post-more">
+      
+      <a href="/2020/11/01/first-timer/"><i class="fa fa-plus-circle" aria-hidden="true"></i>Read more</a>
+    </div>
   </div>
   
 </div>
