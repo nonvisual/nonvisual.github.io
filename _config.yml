@@ -18,7 +18,7 @@ plugins:
 
 # Custom vars
 version:             1.1.0
-google_analytics_id: G-XC4DTDK5EH
+google_analytics_token: G-XC4DTDK5EH
 
 
 # Includes an icon in the footer for each username you enter
