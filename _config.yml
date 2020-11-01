@@ -2,7 +2,6 @@
 title:               Yet unnamed blog
 tagline:             'TBD'
 description:         'A technical blog focusing on Operations Research and Machine Learning topics'
-url:                 http://nonvisual.github.io
 baseurl:             ''
 paginate:            5
 permalink:           pretty
