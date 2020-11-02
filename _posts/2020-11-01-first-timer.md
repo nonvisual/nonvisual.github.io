@@ -1,8 +1,9 @@
 ---
 layout: post
+author: Vladimir Fux
 title: First post example
 topic: Operations Research
-tags: [or, budget, optimization, operations research]
+tags: [or, optimization, operations research]
 ---
 
 | info     |  type  | amount | importance | week |
