@@ -6,8 +6,12 @@ topic: Operations Research
 tags: [or@home, or, optimization, operations research, budget optimization, bank, account]
 excerpt_separator: <!--more-->
 ---
+I was once analyzing my bank account spendings. My bank UI was not very convenient: I cannot easily filter on interesting fields, some visualization were lacking, etc. But was there is an export as .csv button, which came quite handy. I decided to look at my expenses through my favorite tools. 
 
-I was once analyzing my bank account spendings. My bank UI was not very convenient: I cannot easily filter on interesting fields, some visualization were lacking, etc. But was there is an export as .csv button, which came quite handy. I decided to look at my expenses through my favorite tools. Nice! I can do whatever I want with my data! I started looking where I could have avoided spending to much money and then an idea came to my mind: this can be treated as optimization problem! So here it is: Budget optimization @HOME
+<img src="/images/budget_optimization/morgan-housel-cAQZuqdvba8-unsplash.jpg " alt="Budget" style="width:350px;"/>
+<span>Photo by <a href="https://unsplash.com/@morganhousel?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Morgan Housel</a> on <a href="https://unsplash.com/s/photos/bag-of-money?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
+
+Nice! I can do whatever I want with my data! I started looking where I could have avoided spending to much money and then an idea came to my mind: this can be treated as optimization problem! So here it is: **Budget optimization @HOME**
 
 <!--more-->
 ## What is the problem?

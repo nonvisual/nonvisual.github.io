@@ -8,6 +8,8 @@ excerpt_separator: <!--more-->
 ---
 
 In this part we explore our bank account data, prepare it and deal with transaction classification.
+<img src="/images/budget_optimization/transactions_dist.png " alt="Pie" style="width:350px;"/>
+Most frequent transaction types
 <!--more-->
 
 
