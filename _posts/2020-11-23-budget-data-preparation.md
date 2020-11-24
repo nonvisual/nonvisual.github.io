@@ -1,7 +1,7 @@
 ---
 layout: post
 author: Vladimir Fux
-title: Data Preparation budget@HOME
+title: Budget @HOME. Data Preparation
 topic: Operations Research
 tags: [or@home, or, optimization, operations research, budget optimization, bank, data, preparation]
 excerpt_separator: <!--more-->

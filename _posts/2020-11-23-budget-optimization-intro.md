@@ -1,7 +1,7 @@
 ---
 layout: post
 author: Vladimir Fux
-title: Budget optimization @HOME
+title: Budget @HOME. Introduction
 topic: Operations Research
 tags: [or@home, or, optimization, operations research, budget optimization, bank, account]
 excerpt_separator: <!--more-->
