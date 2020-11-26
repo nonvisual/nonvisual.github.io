@@ -6,19 +6,20 @@ topic: Operations Research
 tags: [or@home, or, optimization, operations research, budget optimization, bank, data, preparation]
 excerpt_separator: <!--more-->
 ---
-
-In this part we explore our bank account data, prepare it and deal with transaction classification.
-<img src="/images/budget_optimization/transactions_dist.png " alt="Pie" style="width:350px;"/>
-Most frequent transaction types
+<br/><br/>
+In this part we explore our bank account data, prepare it and deal with the transaction classification.
+{% include /plotly/sunbirst.html %}
+This sunbirst chart from plotly library is a sneek preview from visualization part of this post series. Our task for now is to prepare data, in order to allow such type of visualizations.
 <!--more-->
 
 
 ## Transactions Data Preparation
-As it was mentioned before, I use for the sake of example randomly generated data:
+As it was mentioned before, I will use randomly generated data. There is already prepared data generator, drawing
+transactions from simple distribution:
 ```python
 transactions = generate_transaction_data()
 ```
-But when I do it for myself, I use of course my real data.
+But when I do it for myself, I use of course my real bank account data.
 We can start with just getting a rough idea on what we are dealing with:
 ```python
 transactions.head(5)

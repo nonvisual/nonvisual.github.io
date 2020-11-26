@@ -6,6 +6,9 @@ topic: Operations Research
 tags: [or@home, or, optimization, operations research, budget optimization, bank, account]
 excerpt_separator: <!--more-->
 ---
+
+<br/><br/>
+
 I was once analyzing my bank account spendings. My bank UI was not very convenient: I cannot easily filter on interesting fields, some visualization were lacking, etc. But was there is an export as .csv button, which came quite handy. I decided to look at my expenses through my favorite tools. 
 
 <img src="/images/budget_optimization/morgan-housel-cAQZuqdvba8-unsplash.jpg " alt="Budget" style="width:350px;"/>
