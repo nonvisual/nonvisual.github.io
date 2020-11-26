@@ -191,8 +191,20 @@ I wouldn't expect this rule-based approach to be able to identify all transactio
 
 This code can be found in repository as a [notebook](https://github.com/nonvisual/budget_optimization/blob/main/data/Data%20preparation.ipynb) and as python [module](https://github.com/nonvisual/budget_optimization/tree/main/preparation)
 
+
+## How to use your own data?
+If you want to use your own data, you need to transform it to the expected format with these columns:
+```
+Beneficiary / Originator     string with originator or  beneficiary information
+Payment Details              string with payment information
+Debit                        float, expenses
+Credit                       float, incomes, e.g. salary
+Booking date                 str, of the following format mm/dd/YYYY
+Currency                     str, optional
+```
+
 ## Previous
 1. [Budget optimization intro](/2020/11/23/budget-optimization-intro)
 
 ## Next 
-1. [Data visualizaion]()
+1. [Data visualizaion](/2020/11/26/budget-data-visualization)

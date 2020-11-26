@@ -31,9 +31,16 @@ I use the data which my bank account allows to export as csv. I think many banks
 |NaN |AMAZON EU ... | -125.0    | NaN |     09/12/2019     |  EUR  | 
 
 
+## Tech stack
 
+We will use the following languages/libs:
+* Python
+* pandas, numpy for data preparation
+* plotly for data visualization
+* pulp/cbc for optimization part
+* jupyter, iwidgets for interactive part
 
 
 ## Next? 
 1. [Data preparation](/2020/11/23/budget-data-preparation)
-1. [Data visualizaion]()
+1. [Data visualizaion](/2020/11/26/budget-data-visualization)
