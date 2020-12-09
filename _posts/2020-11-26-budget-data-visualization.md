@@ -48,7 +48,7 @@ fig.show()
 ```
 And that's look nice:
 {% include /plotly/budget_visualization/pie.html %}
-Not it is interactive as promissed: one can switch on/off each transaction type, and double click to select only one label.
+Note it is interactive as promissed: one can switch on/off each transaction type, and double click to select only one label.
 
 Actually, we can do something even nicer. In data prepartion step, for each transaction we not only definedt type, but also entity it is associated with. It is quite general as a term, because depending on context it can be a different thing. E.g. for shopping it can be a specific online shop and for travelling type of expense it can be, say country. 
 
@@ -138,3 +138,10 @@ This is all visualization we need at this step. Last, very minor note: plotly is
 fig.write_html("expense_month_type.html")
 ```
 and include resulting html snippet on your webpage
+
+## The whole series of posts 
+1. [Budget optimization intro](/2020/11/22/budget-optimization-intro)
+1. [Data preparation](/2020/11/23/budget-data-preparation)
+1. [Data visualizaion](/2020/11/26/budget-data-visualization)
+1. [Optimization model](/2020/12/09/budget-model)
+1. [Make it work](/2020/12/10/budget-go-live)

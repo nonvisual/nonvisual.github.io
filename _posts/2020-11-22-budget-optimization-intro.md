@@ -31,6 +31,13 @@ I use the data which my bank account allows to export as csv. I think many banks
 |NaN |AMAZON EU ... | -125.0    | NaN |     09/12/2019     |  EUR  | 
 
 
+
+## Challenge
+Our ambition is to build (step by step) something interactive, which can already be considered as a simple app. 
+We will keep things simple, we will not deploy anything, but rather consider it to be a simple jupyter notebook based applicatoin. Sneak preview:
+
+![Alt Text](/images/budget_optimization/interface.gif)
+
 ## Tech stack
 
 We will use the following languages/libs:
@@ -41,6 +48,9 @@ We will use the following languages/libs:
 * jupyter, iwidgets for interactive part
 
 
-## Next? 
+## The whole series of posts 
+1. [Budget optimization intro](/2020/11/22/budget-optimization-intro)
 1. [Data preparation](/2020/11/23/budget-data-preparation)
 1. [Data visualizaion](/2020/11/26/budget-data-visualization)
+1. [Optimization model](/2020/12/09/budget-model)
+1. [Make it work](/2020/12/10/budget-go-live)
