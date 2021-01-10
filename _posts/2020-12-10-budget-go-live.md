@@ -48,7 +48,7 @@ grocery_slider = widgets.FloatSlider( min=0,
     value=50.0)
 ```
 
-And finally the button:v
+And finally the button:
 ```python
 btn = widgets.Button(description='Optimize')
 ```
@@ -68,6 +68,7 @@ def btn_optimize_eventhandler(obj):
 ```
 Since the output is cleared, we need to re-display the widgets. It is like refreshing a web page. Plus we would like to get the values in sliders from our UI:
 ```python
+display(text, savings_slider,grocery_slider,btn)
 savings = savings_slider.value
 grocery_per_week = grocery_slider.value
 ```
