@@ -7,11 +7,12 @@ tags: [or@home, or , budget optimization, bank, data, pulp, cbc, optimization]
 excerpt_separator: <!--more-->
 ---
 
+In this part we create the "bussiness logic" of our basic app. We would like to retroactively analyze our past spendings, and to select transactions, which we need to cut in order to achieve a certain savings level. Under the hood we will have a small optimization problem, which we solve with open-source solver. Note, that this problem can be solved in multiple ways, and probably one can write a simple determenistic algorithm to find the optimal solution. However our usage of MIP solver makes the approach extandable: we can easily add additional rules for optimization without making major changes to the algorithm. Let's take a look!
+
+<!--more-->
 
 ## Relative importance of transactions
 For optimization to make sense, we as users, may want to specify relative importants of transactions. In the end we want to deduce a retroactive savings plan, and to do so we need to "cancel" some transactions. It is clear that one may save on grocery shopping, but saving on rent payments does not sound like a good idea.
-
-<!--more-->
 
 ### Where the importance factors are coming from?
 That can be user input. For each transaction type we can specify importance factor as integer value. Below are mine:
@@ -190,6 +191,9 @@ us wether this transaction should be kept (1) or removed (0) in our retroactive 
 ```python
 solved_data = selected_year.join(solution)
 ```
+
+## Code
+This code can be found in [repository](https://github.com/nonvisual/budget_optimization)
 
 ## The whole series of posts 
 1. [Budget optimization intro](/2020/11/22/budget-optimization-intro)

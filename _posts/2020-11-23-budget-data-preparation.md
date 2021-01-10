@@ -7,9 +7,11 @@ tags: [or@home, or, optimization, operations research, budget optimization, bank
 excerpt_separator: <!--more-->
 ---
 <br/><br/>
+
+Not only Machine Learning, but also Operations Research projects quite often start with data preparation step. 
 In this part we explore our bank account data, prepare it and deal with the transaction classification.
 {% include /plotly/sunbirst.html %}
-This sunbirst chart from plotly library is a sneek preview from visualization part of this post series. Our task for now is to prepare data, in order to allow such type of visualizations.
+This sunbirst chart from plotly library is a sneek preview from visualization part of this post series. Our task for now is to prepare data, in order to allow such type of visualizations and data explorations through ploting libraries.
 <!--more-->
 
 
@@ -19,7 +21,9 @@ transactions from simple distribution:
 ```python
 transactions = generate_transaction_data()
 ```
-But when I do it for myself, I use of course my real bank account data.
+Note: when I do it for myself, I use of course my real bank account data. Nothing can stop you from doing the same, but the data
+preparation step can vary then significantly.
+
 We can start with just getting a rough idea on what we are dealing with:
 ```python
 transactions.head(5)
@@ -92,12 +96,12 @@ transactions.groupby(['year','month'])[['Debit','Credit']].sum()
 
 
 ## Inferring transaction type
-For the further analysis we need to differentiate different transaction types, i.e. which expense
+For the further analysis we need to differentiate transaction types, i.e. which expense
 is related to grocery shopping, which is leisure and so on. In principle, one can train a classifier to solve this problem,
 but in such case we will need labeled data. The easiest way forward is a rule-based approach for classification. E.g. we know 
 that if Payment Details contain names such "Lidl", "Edeka" or "Rewe" (typical supermarkets in Germany), this is most likely a grocery shopping. If you can find "Booking.com" or "Lufthansa" - this is something to do with travelling. You can always adapt this rule-based approach to your specific data.
 
-To keep it simple, let's focus on just 5 transaction types:
+To keep it simple, let's focus on just 6 transaction types:
 ```python
 types= ['grocery', 'fashion', 'shopping', 'travel', 'rent', "unknown"]
 ```
@@ -189,9 +193,6 @@ If we rerun the method, we see that "unknown" class is gone:
 
 I wouldn't expect this rule-based approach to be able to identify all transaction types, that's quite manual work, but for your own data you can achieve descent numbers with several iterations
 
-This code can be found in repository as a [notebook](https://github.com/nonvisual/budget_optimization/blob/main/data/Data%20preparation.ipynb) and as python [module](https://github.com/nonvisual/budget_optimization/tree/main/preparation)
-
-
 ## How to use your own data?
 If you want to use your own data, you need to transform it to the expected format with these columns:
 ```
@@ -202,6 +203,10 @@ Credit                       float, incomes, e.g. salary
 Booking date                 str, of the following format mm/dd/YYYY
 Currency                     str, optional
 ```
+
+
+## Code
+This code can be found in repository as a [notebook](https://github.com/nonvisual/budget_optimization/blob/main/data/Data%20preparation.ipynb)
 
 ## The whole series of posts 
 1. [Budget optimization intro](/2020/11/22/budget-optimization-intro)

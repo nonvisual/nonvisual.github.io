@@ -9,12 +9,12 @@ excerpt_separator: <!--more-->
 
 <br/><br/>
 
-I was once analyzing my bank account spendings. My bank UI was not very convenient: I cannot easily filter on interesting fields, some visualization were lacking, etc. But was there is an export as .csv button, which came quite handy. I decided to look at my expenses through my favorite tools. 
+I was once analyzing my bank account spendings. My bank UI was not very convenient: I cannot easily filter on interesting fields, some visualization were lacking, etc. But was there is an "export as .csv" button, which came quite handy. I decided to look at my expenses through my favorite tools. 
 
 <img src="/images/budget_optimization/morgan-housel-cAQZuqdvba8-unsplash.jpg " alt="Budget" style="width:350px;"/>
 <span>Photo by <a href="https://unsplash.com/@morganhousel?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Morgan Housel</a> on <a href="https://unsplash.com/s/photos/bag-of-money?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
 
-Nice! I can do whatever I want with my data! I started looking where I could have avoided spending to much money and then an idea came to my mind: this can be treated as optimization problem! So here it is: **Budget optimization @HOME**
+I can do whatever I want with my data! I started looking where I could have avoided spending too much money and then an idea came to my mind: this can be treated as a very simple optimization problem! So here it is: **Budget optimization @HOME**
 
 <!--more-->
 ## What is the problem?
@@ -22,7 +22,7 @@ Nice! I can do whatever I want with my data! I started looking where I could hav
 My bank account transactions contains a bunch of data. I would like to be able to understand easily on what I've spent the most during the past period of time. In addition, I would like to retroactively optimize my expenses, i.e. answer a question: if I wanted to **save X Euros** in the past year, what things should I have avoided to buy?
 
 ## What is the data?
-I use the data which my bank account allows to export as csv. I think many banks do so. For obvious reasons I will show here only artifical data, created with data generator (code provided). This data has exactly the same shape as my bank account data, and most likely it bears strong simmilarities with other banks. That's how it looks like:
+I use the data which my bank account allows to export as csv. I suppose that many banks do so. For obvious reasons I will show here only artifical data, created with data generator (code provided). This data has exactly the same shape as my bank account data, and its format most likely it bears strong simmilarities with other banks. That's how it looks like:
 
 | 	Beneficiary / Originator     |  Payment Detils  | Debit | Credit | Booking date | Currency |
 |----------|--------|--------|------------|------|
@@ -33,7 +33,7 @@ I use the data which my bank account allows to export as csv. I think many banks
 
 
 ## Challenge
-Our ambition is to build (step by step) something interactive, which can already be considered as a simple app. 
+Our ambition is to build (step by step) something interactive, which can already be considered as a very basic app. 
 We will keep things simple, we will not deploy anything, but rather consider it to be a simple jupyter notebook based applicatoin. Sneak preview:
 
 ![Alt Text](/images/budget_optimization/interface.gif)

@@ -137,7 +137,11 @@ This is all visualization we need at this step. Last, very minor note: plotly is
 ```python
 fig.write_html("expense_month_type.html")
 ```
-and include resulting html snippet on your webpage
+and include resulting html snippet on your webpage (examples of such embeddings are above).
+
+
+## Code
+This code can be found in [repository](https://github.com/nonvisual/budget_optimization)
 
 ## The whole series of posts 
 1. [Budget optimization intro](/2020/11/22/budget-optimization-intro)
