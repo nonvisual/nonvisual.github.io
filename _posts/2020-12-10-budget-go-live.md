@@ -7,14 +7,14 @@ tags: [or@home, or , budget optimization, bank, data, ipywidgets, interactive, j
 excerpt_separator: <!--more-->
 ---
 
-Only last step is left: to combine all the components in one jupyter notebook based app. We would like to have it interactive, and in this part we will see how we can do that in Jupyter. It allows to quickly prototype similistic interface, and also showcases a nice type of notebooks, which you can share with your stakeholders, without them running away from the look of all the python code.
+Only last step is left: to combine all the components in one Jupyter notebook based app. We would like to have it interactive, and in this part, we will see how we can do that in Jupyter. It allows to quickly prototype a simplistic interface and also showcases a nice type of notebooks, which you can share with your stakeholders, without them running away from the look of all the python code.
 
 <!--more-->
 
 ## Preparation
 The core of our simplistic UI will be [ipywidgets](https://ipywidgets.readthedocs.io/en/stable/). These widgets will allow us to create buttons and sliders, and also connect them to the necessary code snippets.
 
-We start with preparing our data. Here we generate artificial data (or use the real one), prepare it, define transaction importance factors and filter for a specific year. That's all what we have done in the previous posts of these series. 
+We start with preparing our data. Here we generate artificial data (or use the real one), prepare it, define transaction importance factors, and filter for a specific year. That's all that we have done in the previous posts of this series. 
 
 ```python
 importance_factors = {"grocery":1, "fashion":2, "shopping":3, "travel":10, "rent": 1000, "unknown":10, "income":0}
@@ -26,8 +26,8 @@ selected_year["importance"] = selected_year['type'].map(importance_factors)
 ```
 
 We would like to create three elements of the UI:
-* Slider, which allows to choose percentage of savings which we want to achieve
-* Slider, which determines how much we would like to put aside each week for grocery shoping at minimum
+* Slider, which allows choosing the percentage of savings which we want to achieve
+* Slider, which determines how much we would like to put aside each week for grocery shopping at a minimum
 * Optimize button
 
 ## Sliders and buttons
@@ -61,7 +61,7 @@ display(btn)
 
 <img src="/images/budget_optimization/optimize_interface.PNG" alt="Budget" style="width:150px;"/>
 
-and to link an action to the button click. For this we create an event handler method, which starts from clearing output of previous optimization:
+and to link an action to the button click. For this we create an event handler method, which starts from clearing output of the previous optimization:
 ```python
 def btn_optimize_eventhandler(obj):
     clear_output()
@@ -95,17 +95,16 @@ obj.value = solved_data, out
 
 ```
 ## Few tricks on top
-Well, it is largely done! Every time we click on optimize button, user inputs from sliders will be taken, new model will be generated and solved, and corresponding visualization preview will appear. Can we do a bit better? 
+Well, it is largely done! Every time we click on optimize button, user inputs from sliders will be taken, a new model will be generated and solved, and a corresponding visualization preview will appear. Can we do a bit better? 
 
-Yes, we can do 2 minor improvements on top, to make this notebook looking more like a web app. The first thing we will do is a detailed visualization of the saving plan. A user can have a brief overview after optimization, but if plan make sense, they can 
-inspect a more detailed view. For this we will create a new button, appearing after optimization is done, which allows open/close detailed preview. This part is a bit trickier than previous view generation, since we need to generate new output object, and clear only this output object, not wipe out optimization results and plan preview. 
+Yes, we can do 2 minor improvements on top, to make this notebook looking more like a web app. The first thing we will do is a detailed visualization of the saving plan. A user can have a brief overview after optimization, but if the plan makes sense, they can inspect a more detailed view. For this we will create a new button, appearing after optimization is done, which allows open/close detailed preview. This part is a bit trickier than the previous view generation since we need to generate a new output object, and clear only this output object, not wipe out optimization results and plan preview. 
 
 Let's take a closer look. We make to extra buttons, one for more details, and the other one for closing (clearing) these details.
 ```python
 btn_analysis = widgets.Button(description='More details')
 btn_close_analysis = widgets.Button(description='Close details')
 ```
-We also need to modify previously created method and add the following lines in order to create new output object, in which additional visualization would be displayed, and which we can later safely clear:
+We also need to modify the previously created method and add the following lines to create a new output object, in which additional visualization would be displayed, and which we can later safely clear:
 ```python
 out = widgets.Output()
 display(out)
@@ -128,10 +127,10 @@ def btn_close_eventhandler(obj):
         display(btn_analysis)
 ```
 
-The first one (show "More details") is clearing output, plotting new visualization and displaying close analysis button. The second one just clears the output again, and renders "More details" button
+The first one (show "More details") is clearing output, plotting new visualization, and displaying the "close analysis" button. The second one just clears the output again and renders the "More Details" button.
 
 
-The last detail is all this bunch of code in our notebook. A user would not be happy to see a lot of code, which he didn't understand mixed together with UI widgets. We can hide it. Here is a code snippet which I often use for this purpose:
+The last detail is all this bunch of code in our notebook. A user would not be happy to see a lot of code, which he didn't understand mixed with UI widgets. We can hide it. Here is a code snippet that I often use for this purpose:
 ```python
 from IPython.display import HTML
 
@@ -149,10 +148,10 @@ $( document ).ready(code_toggle);
 </script>
 <form action="javascript:code_toggle()"><input type="submit" value="Click here to toggle on/off the raw code."></form>''')
 ```
-This snippet allows to show/hide notebook's code with a click on corresponding button.
+This snippet allows showing/hiding the notebook's code with a click on the corresponding button.
 
 
-Done! Our notebook looks now like a simplistic web-app, with usable interface:
+Done! Our notebook looks now like a simplistic web-app, with the interactive interface:
 ![Alt Text](/images/budget_optimization/interface.gif)
 
 ## Code

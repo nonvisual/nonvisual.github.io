@@ -8,23 +8,23 @@ excerpt_separator: <!--more-->
 ---
 <br/><br/>
 
-Not only Machine Learning, but also Operations Research projects quite often start with data preparation step. 
-In this part we explore our bank account data, prepare it and deal with the transaction classification.
+Not only Machine Learning, but also Operations Research projects quite often start with the data preparation step. 
+In this part, we explore our bank account data, prepare it and deal with the transaction classification.
 {% include /plotly/sunbirst.html %}
-This sunbirst chart from plotly library is a sneek preview from visualization part of this post series. Our task for now is to prepare data, in order to allow such type of visualizations and data explorations through ploting libraries.
+This sunburst chart from plotly library is a sneak preview from the visualization part of this post series. Our task, for now, is to prepare data, in order to allow such type of visualizations and data explorations through plotting libraries.
 <!--more-->
 
 
 ## Transactions Data Preparation
-As it was mentioned before, I will use randomly generated data. There is already prepared data generator, drawing
-transactions from simple distribution:
+As was mentioned before, I will use randomly generated data. There is already a prepared data generator, drawing
+transactions from the simple distribution:
 ```python
 transactions = generate_transaction_data()
 ```
 Note: when I do it for myself, I use of course my real bank account data. Nothing can stop you from doing the same, but the data
 preparation step can vary then significantly.
 
-We can start with just getting a rough idea on what we are dealing with:
+We can start with just getting a rough idea of what we are dealing with:
 ```python
 transactions.head(5)
 ```
@@ -96,10 +96,9 @@ transactions.groupby(['year','month'])[['Debit','Credit']].sum()
 
 
 ## Inferring transaction type
-For the further analysis we need to differentiate transaction types, i.e. which expense
-is related to grocery shopping, which is leisure and so on. In principle, one can train a classifier to solve this problem,
-but in such case we will need labeled data. The easiest way forward is a rule-based approach for classification. E.g. we know 
-that if Payment Details contain names such "Lidl", "Edeka" or "Rewe" (typical supermarkets in Germany), this is most likely a grocery shopping. If you can find "Booking.com" or "Lufthansa" - this is something to do with travelling. You can always adapt this rule-based approach to your specific data.
+For further analysis, we need to differentiate transaction types, i.e. which expense
+is related to grocery shopping, which is leisure, and so on. In principle, one can train a classifier to solve this problem,
+but in such a case, we will need labeled data. The easiest way forward is a rule-based approach for classification. E.g. we know that if Payment Details contain names such "Lidl", "Edeka" or "Rewe" (typical supermarkets in Germany), this is most likely grocery shopping. If you can find "Booking.com" or "Lufthansa" - this is something to do with traveling. You can always adapt this rule-based approach to your specific data.
 
 To keep it simple, let's focus on just 6 transaction types:
 ```python
@@ -115,7 +114,7 @@ types_mapping['grocery'] = [
     "aldi",
 ]
 ```
-Now we need to go row by row and see, which type we should assigin to the observed transaction. If we have no idea - we assign "unknown" value. 
+Now we need to go row by row and see, which type we should assign to the observed transaction. If we have no idea - we assign an "unknown" value. 
 I decide to do it with help of pandas apply and a simple function below:
 ```python
 def assign_type(row,types_mapping: Dict[str,List[str]], info_columns:List[str]):
@@ -128,8 +127,8 @@ def assign_type(row,types_mapping: Dict[str,List[str]], info_columns:List[str]):
     matching.append('unknown')
     return matching[0]
 ```
-Here, we've noticed in data that information about shop can be in either 'Payment Details' or in "Beneficiary / Originator" columns.
-That's why we look in several columns contained in "info_columns" list. If value is not nan in each column, we check if any of the type-specific keywords (e.g. "Lidl" shop name) is contained in the column value. If yes - we add this class in the matching. Potentially, there can be several matchings for some reasons. That's why we append all of them and return the first entry only (simple conflict resolution). And we always add 'unknown' type for the case if no matching was found.
+Here, we've noticed in data that information about the shop can be in either 'Payment Details' or in the "Beneficiary / Originator" columns.
+That's why we look in several columns contained in the "info_columns" list. If a value is not nan in each column, we check if any of the type-specific keywords (e.g. "Lidl" shop name) is contained in the column value. If yes - we add this class in the matching. Potentially, there can be several matchings for some reasons. That's why we append all of them and return the first entry only (simple conflict resolution). And we always add the 'unknown' type for the case if no matching was found.
 
 What's left is to prepare partial (because apply expects 1-argument function) and create a new column in the transactions dataframe:
 ```python
@@ -148,7 +147,7 @@ Done, now our dataframe contains correct date data type, has separate columns fo
 
 
 ## Adding new mappings
-In terms of dealing with your data, one can always refine the rules. Let's check how many of transactions are rendered as unknown:
+In terms of dealing with your data, one can always refine the rules. Let's check how many transactions are rendered as unknown:
 
 ```python
 transactions.groupby('type').size()
@@ -169,7 +168,7 @@ If we look at those, we can see that indeed I forgot several often transaction c
 ```python
 transactions[transactions['type']=='unknown']
 ```
-One of the missing shops in grocery category is "ROSSMANN"
+One of the missing shops in the grocery category is "ROSSMANN"
 
 ```python
 types_mapping['grocery'] = types_mapping['grocery'].append('rossmann')
@@ -180,7 +179,7 @@ I also forgot about salary:
 types_mapping['salary'] = ["salary"]
 ```
 
-If we rerun the method, we see that "unknown" class is gone:
+If we rerun the method, we see that the "unknown" class is gone:
 
 | type     |   0 |
 |:---------|----:|
@@ -191,7 +190,7 @@ If we rerun the method, we see that "unknown" class is gone:
 | shopping |  43 |
 | travel   |   4 |
 
-I wouldn't expect this rule-based approach to be able to identify all transaction types, that's quite manual work, but for your own data you can achieve descent numbers with several iterations
+I wouldn't expect this rule-based approach to be able to identify all transaction types, that's quite manual work, but for your data, you can achieve decent numbers with several iterations
 
 ## How to use your own data?
 If you want to use your own data, you need to transform it to the expected format with these columns:
@@ -206,7 +205,7 @@ Currency                     str, optional
 
 
 ## Code
-This code can be found in repository as a [notebook](https://github.com/nonvisual/budget_optimization/blob/main/data/Data%20preparation.ipynb)
+This code can be found in the repository as a [notebook](https://github.com/nonvisual/budget_optimization/blob/main/data/Data%20preparation.ipynb)
 
 ## The whole series of posts 
 1. [Budget optimization intro](/2020/11/22/budget-optimization-intro)

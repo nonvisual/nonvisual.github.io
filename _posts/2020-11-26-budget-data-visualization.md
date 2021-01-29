@@ -9,7 +9,7 @@ excerpt_separator: <!--more-->
 In this part we visualize bank transactions data, aiming to get an idea 
 * Types of expenses and there share
 * Savings trends
-* Expenses by monthes and types
+* Expenses by months and types
 Just to understand what do we spend money on, and where is potential for savings.
 
 {% include /plotly/monthly_balance.html %}
@@ -21,9 +21,9 @@ There are several choices for visualization libraries in python:
 * plotly
 * seaborn
 
-In all my previous projects I successfull used plotnine and was quite satisfied with it so far. For this post though, I decided to opt for plotly, which is new library for me. The main selling point for me was interactiveness of plots (just check the plot in the preview of the post).
+In all my previous projects I successfully used plotnine and was quite satisfied with it so far. For this post though, I decided to opt for plotly, which is a new library for me. The main selling point for me was the interactiveness of plots (just check the plot in the preview of the post).
 
-As an outcome of data preparation post, we have a python function, which makes our data ready for further analysis. We again use synthetic data, and prepare it (in place):
+As an outcome of the data preparation post, we have a python function, which makes our data ready for further analysis. We again use synthetic data, and prepare it (in place):
 ```python
 transactions = generate_transaction_data()
 prepare_data(transactions)
@@ -36,7 +36,7 @@ selected_year = transactions[transactions['year']==year]
 ```
 
 
-We can start with a simple pie chart, showing us expenses distribution by type. First observation is that pie chart does not like much negative values, so we first need to take absolute value of debit column:
+We can start with a simple pie chart, showing us expenses distribution by type. The first observation is that the pie chart does not like negative values, so we first need to take the absolute value of the debit column:
 ```python
 selected_year ['expense'] = abs(transactions['Debit'])
 ```
@@ -46,11 +46,11 @@ fig = px.pie(selected_year, values='expense', names='type', title=f'Ratio of exp
 fig.update_traces(textposition='inside', textinfo='percent+label')
 fig.show()
 ```
-And that's look nice:
+And that looks nice:
 {% include /plotly/budget_visualization/pie.html %}
-Note it is interactive as promissed: one can switch on/off each transaction type, and double click to select only one label.
+Note it is interactive as promised: one can switch on/off each transaction type, and double click to select only one label.
 
-Actually, we can do something even nicer. In data prepartion step, for each transaction we not only definedt type, but also entity it is associated with. It is quite general as a term, because depending on context it can be a different thing. E.g. for shopping it can be a specific online shop and for travelling type of expense it can be, say country. 
+Actually, we can do something even nicer. In the data preparation step, for each transaction, we not only defined the type, but also the entity it is associated with. It is quite general as a term because depending on the context it can be a different thing. E.g. for shopping, it can be a specific online shop and for traveling type of expense, it can be, say country. 
 
 With sunburst type of plot, we can have an additional layer of distribution, this time by entity. This way, on a single interactive plot we can see both type and entities distribution.
 ```python
@@ -59,17 +59,17 @@ fig = px.sunburst(selected_year, values='expense', path=['type','entity'], \
 fig.update_traces(textinfo="label+percent entry")
 fig.show()
 ```
-Here we specify in path argument all the columns, on which we would like to see a distribution. That's the outcome:
+Here we specify in the path argument all the columns, on which we would like to see distribution. That's the outcome:
 
 {% include /plotly/budget_visualization/sunbirst.html %}
 If we e.g. click on grocery type, then we see distribution by retailers. Nice!
 
-This is all fancy, but that's not we would like to see. We would like to see how our balance evolves with time and also how are savings are trending.
+This is all fancy, but that's not what we would like to see. We would like to see how our balance evolves with time and also how our savings are trending.
 
-Let's start with monthly balance. At first we aggregate by month, and sum in pandas. Further we introduce new columns:
-* balance is to track difference between Debit and Credit transactions in month
+Let's start with the monthly balance. At first, we aggregate by month, and sum in pandas. Further, we introduce new columns:
+* balance is to track the difference between Debit and Credit transactions in a month
 * color - auxiliary column, which will allow us easily to color negative balances
-* savings - cumulative sum of balances, which is basically accumulated savings
+* savings - the cumulative sum of balances, which is accumulated savings
 
 
 
@@ -133,11 +133,11 @@ fig.show()
 ```
 {% include /plotly/budget_visualization/savings.html %}
 
-This is all visualization we need at this step. Last, very minor note: plotly is nicely embedible as html! You can do 
+This is all visualization we need at this step. Last, very minor note: plotly is nicely embeddable as html! You can do 
 ```python
 fig.write_html("expense_month_type.html")
 ```
-and include resulting html snippet on your webpage (examples of such embeddings are above).
+and include the resulting html snippet on your webpage (examples of such embeddings are above).
 
 
 ## Code

@@ -19,12 +19,12 @@ I can do whatever I want with my data! I started looking where I could have avoi
 <!--more-->
 ## What is the problem?
 
-My bank account transactions contains a bunch of data. I would like to be able to understand easily on what I've spent the most during the past period of time. In addition, I would like to retroactively optimize my expenses, i.e. answer a question: if I wanted to **save X Euros** in the past year, what things should I have avoided to buy?
+My bank account transactions contain a bunch of data. I would like to be able to understand easily what I've spent the most during the past period of time. Besides, I would like to retroactively optimize my expenses, i.e. answer a question: if I wanted to **save X Euros** in the past year, what things should I have avoided buying?
 
 ## What is the data?
-I use the data which my bank account allows to export as csv. I suppose that many banks do so. For obvious reasons I will show here only artifical data, created with data generator (code provided). This data has exactly the same shape as my bank account data, and its format most likely it bears strong simmilarities with other banks. That's how it looks like:
+I use the data which my bank account allows to export as CSV. I suppose that many banks do so. For obvious reasons, I will show here only artificial data, created with a data generator (code provided). This data has exactly the same shape as my bank account data, and its format most likely bears strong similarities with other banks. That's how it looks like:
 
-| 	Beneficiary / Originator     |  Payment Detils  | Debit | Credit | Booking date | Currency |
+|   Beneficiary / Originator     |  Payment Detils  | Debit | Credit | Booking date | Currency |
 |----------|--------|--------|------------|------|
 | Lidl  1245...   | NaN      |  -60.0    |   NaN |    09/12/2019      |  EUR  |
 | Zalando Payments GmbH..  | NaN  |   -45.0    |  NaN |     09/12/2019      |  EUR  |
@@ -34,7 +34,7 @@ I use the data which my bank account allows to export as csv. I suppose that man
 
 ## Challenge
 Our ambition is to build (step by step) something interactive, which can already be considered as a very basic app. 
-We will keep things simple, we will not deploy anything, but rather consider it to be a simple jupyter notebook based applicatoin. Sneak preview:
+We will keep things simple, we will not deploy anything, but rather consider it to be a simple Jupyter notebook based application. Sneak preview:
 
 ![Alt Text](/images/budget_optimization/interface.gif)
 
@@ -45,7 +45,7 @@ We will use the following languages/libs:
 * pandas, numpy for data preparation
 * plotly for data visualization
 * pulp/cbc for optimization part
-* jupyter, iwidgets for interactive part
+* jupyter, iwidgets for the interactive part
 
 
 ## The whole series of posts 
