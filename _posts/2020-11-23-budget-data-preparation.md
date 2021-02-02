@@ -205,7 +205,7 @@ Currency                     str, optional
 
 
 ## Code
-This code can be found in the repository as a [notebook](https://github.com/nonvisual/budget_optimization/blob/main/data/Data%20preparation.ipynb)
+This code can be found in the repository as a [notebook](https://github.com/nonvisual/budget_optimization/blob/main/preparation/Data%20preparation.ipynb)
 
 ## The whole series of posts 
 1. [Budget optimization intro](/2020/11/22/budget-optimization-intro)
