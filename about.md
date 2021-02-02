@@ -25,9 +25,7 @@ Industries:
 
 
 ## About this blog
-
-
-
+All opinions in this blog are mine, and do not present opinion of my current employer(s).
 Thanks for reading!
 
 
