@@ -152,7 +152,7 @@ This snippet allows showing/hiding the notebook's code with a click on the corre
 
 
 Done! Our notebook looks now like a simplistic web-app, with the interactive interface:
-![Alt Text](/images/budget_optimization/interface.gif)
+![Alt Text](/images/budget_optimization/interface_for_blog.gif)
 
 ## Code
 This code can be found in [repository](https://github.com/nonvisual/budget_optimization)
