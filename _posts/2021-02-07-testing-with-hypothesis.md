@@ -60,11 +60,11 @@ def create_knapsack_problem(
 
     return model, decision_vars
 ```
-This method gets profits and weights information per item, capacity restrictions, and returns generated model object together with reference on decision variables (so we can easily parse their values later).
+This method gets profits and weights information per item, capacity restrictions, and returns the generated model object together with reference on decision variables (so we can easily parse their values later).
 
 
 ## Hypothesis-based testing
-We start with desired properties of the solution. What do we expect from the Knapsack problem outcome? If the inputs are valid (non-negative values), then we do expect every problem to be **feasible** (except large instances, which may be interrupted). 
+We start with desired properties of the solution. What do we expect from the Knapsack problem outcome? If the inputs are valid (non-negative values), then we do expect every problem to be solved **optimally** (except large instances, which may be interrupted). 
 
 Another obvious property is that the total **weight** of the knapsack **should not be larger than the capacity** of the knapsack, which is literally the main constraint of the problem.
 
@@ -113,7 +113,7 @@ Here we ask to generate problem instances with 20 items. It is often to specify 
 ```
 And here we say that we want 8 examples to be generated, "print_blob" allows to printout data necessary for tests reproduction (we will see used it later) and finally we set a deadline in order not to have a very long-running test.
 
-As for the test body, it remains pretty straightforward. We create model, solve it and asserd if the status is optimal:
+As for the test body, it remains pretty straightforward. We create model, solve it and assert if the status is optimal:
 ```python
 def test_knapsack_model_optimal(data):
     profits, weights, _ = data
@@ -125,7 +125,9 @@ So what Hypothesis framework will do for us here? It will generate in a smart wa
 
 
 ### Reproducing failing examples
-Let us write now a test for the second desired property, i.e. for the capacity of the Knapsack. It looks pretty similar to the test above, but we in addition need to sum up all the weights of selected items:
+But not all tests will always work. Hypothesis framework uses random seed, so everytime you execute the test, data instance can be different. How do we debug such thing?
+
+Let us write a new test for the second desired property, i.e. for the capacity of the Knapsack. It looks pretty similar to the test above, but we in addition need to sum up all the weights of selected items:
 ```python
 def test_knapsack_model_respects_capacity(data):
     profits, weights, _ = data
