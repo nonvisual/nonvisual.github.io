@@ -3,7 +3,7 @@ layout: post
 author: Vladimir Fux
 title: Reliable OR development. Testing with Hypothesis
 topic: Operations Research
-tags: [ or , budget , testing, hypothesis, property-based testing, optimization]
+tags: [ or , budget , testing, hypothesis, property-based testing, optimization, knapsack]
 excerpt_separator: <!--more-->
 ---
 
@@ -16,7 +16,7 @@ But in any case, you want to make sure that your model is correct, that your sol
 </p>
 
 In this article, we talk about an **efficient and simple way to test optimization models**, which was introduced to me by my colleague [Torsten](https://www.linkedin.com/in/torsten-gellert-41aab1146/).
-More specifically, I will talk about the [Hypothesis](https://hypothesis.readthedocs.io/en/latest/) framework which can be used for any type of code, though it exceptionally fits Operations Research testing needs. Let's start! 
+More specifically, I will talk about the [Hypothesis](https://hypothesis.readthedocs.io/en/latest/) framework which can be used for any type of code, and exceptionally well fits Operations Research testing needs. Let's start! 
 
 <!--more-->
 
